@@ -1,13 +1,8 @@
-import json
-import boto3
-
-#########################
-if __name__ == "__main__":
-    main()
+import json, argparse, boto3 
 
 #########################
 def main():
-    parser = argparse.ArgumentParser(description='post a message to a topic in AWS SNS. It assumes that your credentials are in the correct place for fracelab profile')
+    parser = argparse.ArgumentParser(description='post a message to a topic in AWS SNS. It assumes that your AWS credentials are in the correct place ~/.aws/credentials')
     parser.add_argument('arn',action='store',help='Topic ARN')
     parser.add_argument('msg',action='store',type=str,help='SNS message')
     parser.add_argument('sub',action='store',type=str,help='SNS subject')
@@ -32,3 +27,8 @@ def post(topic,msg,subject):
         MessageStructure='json'
     )
     return response
+
+#########################
+if __name__ == "__main__":
+    main()
+
